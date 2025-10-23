@@ -1,0 +1,29 @@
+name: CI del Proyecto Python
+
+on:
+  push:
+    branches:
+      - sangucho # ⬅️ Revisa que este sea el nombre de tu rama
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11' # ⬅️ Ajusta a tu versión
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Ejecutar tests automáticos
+      # Esto ejecutará todos los archivos test_*.py en la carpeta tests/
+      run: pytest tests/
