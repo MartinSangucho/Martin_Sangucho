@@ -3,7 +3,7 @@ name: CI del Proyecto Python
 on:
   push:
     branches:
-      - sangucho # ⬅️ Revisa que este sea el nombre de tu rama
+      - sangucho
 
 jobs:
   build-and-test:
@@ -16,7 +16,7 @@ jobs:
     - name: Configurar Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11' # ⬅️ Ajusta a tu versión
+        python-version: '3.11'
 
     - name: Instalar dependencias
       run: |
@@ -24,6 +24,6 @@ jobs:
         pip install -r requirements.txt
         pip install pytest
 
-    - name: Ejecutar tests automáticos
-      # Esto ejecutará todos los archivos test_*.py en la carpeta tests/
-      run: pytest tests/
+    - name: Ejecutar tests automáticos (CORREGIDO)
+     
+      run: PYTHONPATH=. pytest tests/
