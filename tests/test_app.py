@@ -6,7 +6,7 @@ def test_home():
     client = app.test_client()
     response = client.get('/')
     
-    # ✅ CORRECCIÓN: Ahora espera correctamente "Hola Mundo"
+    # ✅ ESTO DEBE SER "Hola Mundo"
     assert response.data == b"Hola Mundo"
     
     assert response.status_code == 200
